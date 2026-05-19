@@ -72,7 +72,13 @@ class BrowserAgentAI {
     const browser = await chromium.launch({
       headless: true,
       slowMo: BROWSER_SLOW_MO,
-      args: ['--start-maximized']
+      args: [
+  '--start-maximized',
+  '--no-sandbox', 
+  '--disable-setuid-sandbox', 
+  '--disable-dev-shm-usage'
+]
+    
     });
     const context = await browser.newContext({ viewport: null });
     const page = await context.newPage();
