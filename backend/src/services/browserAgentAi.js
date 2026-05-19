@@ -70,7 +70,7 @@ class BrowserAgentAI {
     console.log(`└────────────────────────────────────────────────────┘\n`);
 
     const browser = await chromium.launch({
-      headless: false,
+      headless: process.env.NODE_ENV === 'production' ? true : false,
       slowMo: BROWSER_SLOW_MO,
       args: ['--start-maximized']
     });
